@@ -34,36 +34,41 @@ const GameController: React.FC<GameControllerProps> = ({
 	const next_date = new Date(Date.UTC(current_date.getUTCFullYear(), current_date.getUTCMonth(), current_date.getUTCDate() + 1));
 	const gameFinished = gameOver || gameWon;
 	return (
-		<div className="w-full flex flex-col items-center">
+		<div>
 			<div className="controller-body">
-				<div className="game-display">
-					<div className="game-image">
+				<div className="flex flex-row game-display items-start">
+					<div className="game-image self-start">
 						<GameImageDisplay imageSrc={imageSrc} gameWon={gameWon} sinner={targetCharacter} gameOver={gameOver} />
 					</div>
-					<div className="game-display">
-						<GameStatus
-							gameOver={gameOver}
-							gameWon={gameWon}
-							targetCharacter={targetCharacter}
-							guesses={guesses}
-							MAX_GUESSES={MAX_GUESSES}
-						/>
+					<div className="flex flex-col items-center justify_between h-full">
+						<div className="game-display self-start">
+							<GameStatus
+								gameOver={gameOver}
+								gameWon={gameWon}
+								targetCharacter={targetCharacter}
+								guesses={guesses}
+								MAX_GUESSES={MAX_GUESSES}
+							/>
+						</div>
+						<div className="flex-1" />
+						<div>
+							{gameFinished && (
+								<div className="w-full max-w-lg my-4 mx-auto">
+									<CountdownClock nextDate={next_date} />
+								</div>
+							)}
+							{!gameFinished && (
+								<div className="w-full max-w-lg my-4 mx-auto">
+									<CharacterSelect
+										characters={allCharacters}
+										onSelect={handleSelectCharacter}
+										disabled={guessDisabled}
+									/>
+								</div>
+							)}
+						</div>
 					</div>
 				</div>
-				{gameFinished && (
-					<div className="w-full max-w-lg my-4 mx-auto">
-						<CountdownClock nextDate={next_date} />
-					</div>
-				)}
-				{!gameFinished && (
-					<div className="w-full max-w-lg my-4 mx-auto">
-						<CharacterSelect
-							characters={allCharacters}
-							onSelect={handleSelectCharacter}
-							disabled={guessDisabled}
-						/>
-					</div>
-				)}
 			</div>
 		</div>
 	);

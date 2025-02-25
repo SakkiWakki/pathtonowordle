@@ -41,7 +41,7 @@ const Tile: React.FC<TileProps> = ({
   attribute.name = attribute.name.toLowerCase();
   attribute.value = attribute.value.toLowerCase();
   const displayValue = attribute.value && attribute.value.trim() !== '' ? attribute.value : null;
-  const tile_formatting = `${attribute.name} bg-class-${attribute.rank}-gradient tile-content ${attribute.state} ${animationClass} ${height} tile-dynamic ${width}`;
+  const tile_formatting = `${attribute.name} bg-class-${attribute.rank}-gradient tile-content ${attribute.state} ${animationClass} ${height} tile-height tile-width ${width}`;
   const character_rank: CharacterRank = attribute.rank as CharacterRank;
 
   return (

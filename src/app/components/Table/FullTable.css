@@ -1,0 +1,6 @@
+.full-table {
+	@apply flex flex-col items-center justify-center rounded-md capitalize;
+	@apply sm:w-24 lg:w-[55vw] text-xs lg:text-lg lg:m-0.5 font-bold;
+	@apply min-w-0 px-2 truncate;
+}
+

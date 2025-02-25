@@ -1,6 +1,7 @@
 // GuessRow.tsx
 import React from 'react';
 import Tile from '@/app/components/Tile/Tile';
+import "../Tile/Tile.css"
 import { Attribute, Character, Thresholds } from '@/types';
 import { EvaluateNumericalGuess } from '@/lib/GuessUtils';
 
@@ -79,18 +80,19 @@ const GuessRow: React.FC<GuessRowProps> = ({ guess, thresholds, target_guess, ro
 		<>
 			{/* the margin here is to offset mobile/very small screens because for some reason the layout is leaving about this space of margin to the right and I can't find out which element is doing that */}
 			<div key={rowIndex} className="flex flex-row ml-2">
-				<Tile
-					key={`${rowIndex}-image`}
-					attribute={image}
-					isImageTile={true}
-					isEmpty={image.value === ""}
-				/>
-
-				<Tile
-					key={`${rowIndex}-name`}
-					attribute={name}
-					width="wide"
-				/>
+					<Tile
+						key={`${rowIndex}-image`}
+						attribute={image}
+						isImageTile={true}
+						isEmpty={image.value === ""}
+					/>
+				<div>
+					<Tile
+						key={`${rowIndex}-name`}
+						attribute={name}
+						width="wide"
+					/>
+				</div>
 				{createCommonColumns([code, alignment, tendency, height, birthplace])}
 			</div>
 		</>

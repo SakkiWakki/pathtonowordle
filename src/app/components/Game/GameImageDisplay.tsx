@@ -29,13 +29,14 @@ const GameImageDisplay: React.FC<GameImageDisplayProps> = ({
 
 	return (
 		<div className="flex flex-col items-center">
-			<div className={`relative overflow-hidden ${gradient_to_render}`}>
+			<div className={`relative object-fill ${gradient_to_render}`}>
 				<Image
 					src={imageSrc}
 					alt="Selected Character"
 					width={512}
 					height={512}
-					className="h-full w-full"
+					className="w-full h-full"
+
 					unoptimized={true}
 				/>
 			</div>
